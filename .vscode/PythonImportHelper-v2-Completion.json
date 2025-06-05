@@ -1,0 +1,87 @@
+[
+    {
+        "label": "TextNode",
+        "importPath": "textnode",
+        "description": "textnode",
+        "isExtraImport": true,
+        "detail": "textnode",
+        "documentation": {}
+    },
+    {
+        "label": "TextType",
+        "importPath": "textnode",
+        "description": "textnode",
+        "isExtraImport": true,
+        "detail": "textnode",
+        "documentation": {}
+    },
+    {
+        "label": "TextNode",
+        "importPath": "textnode",
+        "description": "textnode",
+        "isExtraImport": true,
+        "detail": "textnode",
+        "documentation": {}
+    },
+    {
+        "label": "TextType",
+        "importPath": "textnode",
+        "description": "textnode",
+        "isExtraImport": true,
+        "detail": "textnode",
+        "documentation": {}
+    },
+    {
+        "label": "unittest",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "unittest",
+        "description": "unittest",
+        "detail": "unittest",
+        "documentation": {}
+    },
+    {
+        "label": "Enum",
+        "importPath": "enum",
+        "description": "enum",
+        "isExtraImport": true,
+        "detail": "enum",
+        "documentation": {}
+    },
+    {
+        "label": "main",
+        "kind": 2,
+        "importPath": "src.main",
+        "description": "src.main",
+        "peekOfCode": "def main():\n    node = TextNode(\"This is a test\", TextType.NORMAL)\n    print(node)\nif __name__ == \"__main__\":\n    main()",
+        "detail": "src.main",
+        "documentation": {}
+    },
+    {
+        "label": "TestTextNode",
+        "kind": 6,
+        "importPath": "src.test_textnode",
+        "description": "src.test_textnode",
+        "peekOfCode": "class TestTextNode(unittest.TestCase):\n    def test_eq(self):\n        node = TextNode(\"This is a text node\", TextType.BOLD)\n        node2 = TextNode(\"This is a text node\", TextType.BOLD)\n        self.assertEqual(node, node2)\n    def test_not_eq_different_text(self):\n        node = TextNode(\"This is a text node\", TextType.BOLD)\n        node2 = TextNode(\"This is a different text node\", TextType.BOLD)\n        self.assertNotEqual(node, node2)\n    def test_not_eq_different_type(self):",
+        "detail": "src.test_textnode",
+        "documentation": {}
+    },
+    {
+        "label": "TextType",
+        "kind": 6,
+        "importPath": "src.textnode",
+        "description": "src.textnode",
+        "peekOfCode": "class TextType(Enum):\n    NORMAL = \"normal\"\n    BOLD = \"bold\"\n    ITALIC = \"italic\"\n    CODE = \"code\"\n    LINK = \"link\"\n    IMAGE = \"image\"\nclass TextNode:\n    def __init__(self, text, text_type, url=None):\n        self.text = text",
+        "detail": "src.textnode",
+        "documentation": {}
+    },
+    {
+        "label": "TextNode",
+        "kind": 6,
+        "importPath": "src.textnode",
+        "description": "src.textnode",
+        "peekOfCode": "class TextNode:\n    def __init__(self, text, text_type, url=None):\n        self.text = text\n        self.text_type = text_type\n        self.url = url\n    def __eq__(self, other):\n        if not isinstance(other, TextNode):\n            return False\n        return (\n            self.text == other.text and",
+        "detail": "src.textnode",
+        "documentation": {}
+    }
+]
