@@ -1,5 +1,14 @@
 [
     {
+        "label": "json",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "json",
+        "description": "json",
+        "detail": "json",
+        "documentation": {}
+    },
+    {
         "label": "TextNode",
         "importPath": "textnode",
         "description": "textnode",
@@ -49,6 +58,14 @@
         "documentation": {}
     },
     {
+        "label": "LeafNode",
+        "importPath": "htmlnode",
+        "description": "htmlnode",
+        "isExtraImport": true,
+        "detail": "htmlnode",
+        "documentation": {}
+    },
+    {
         "label": "Enum",
         "importPath": "enum",
         "description": "enum",
@@ -62,6 +79,15 @@
         "importPath": "src.htmlnode",
         "description": "src.htmlnode",
         "peekOfCode": "class HTMLNode:\n    def __init__(self, tag=None, value=None, children=None, props=None):\n        self.tag = tag\n        self.value = value\n        self.children = children\n        self.props = props\n    def to_html(self):\n        raise NotImplementedError(\"to_html not implemented\")\n    def props_to_html(self):\n        if self.props is None:",
+        "detail": "src.htmlnode",
+        "documentation": {}
+    },
+    {
+        "label": "LeafNode",
+        "kind": 6,
+        "importPath": "src.htmlnode",
+        "description": "src.htmlnode",
+        "peekOfCode": "class LeafNode(HTMLNode):\n    def __init__(self, tag=None, value=None, props=None):\n        if value is None:\n            raise ValueError(\"value is required\")\n        super().__init__(tag, value, None, props)\n    def to_html(self):\n        if self.value is None:\n            raise ValueError(\"value is required\")\n        if self.tag is not None:\n            props_html = self.props_to_html()",
         "detail": "src.htmlnode",
         "documentation": {}
     },
@@ -80,6 +106,15 @@
         "importPath": "src.test_htmlnode",
         "description": "src.test_htmlnode",
         "peekOfCode": "class TestHTMLNode(unittest.TestCase):\n    def test_props_to_html(self):\n        node = HTMLNode(\n            \"a\",\n            \"Click me!\",\n            None,\n            {\"href\": \"https://www.google.com\", \"target\": \"_blank\"}\n        )\n        expected = 'href=\"https://www.google.com\" target=\"_blank\"'\n        self.assertEqual(node.props_to_html(), expected)",
+        "detail": "src.test_htmlnode",
+        "documentation": {}
+    },
+    {
+        "label": "TestLeafNode",
+        "kind": 6,
+        "importPath": "src.test_htmlnode",
+        "description": "src.test_htmlnode",
+        "peekOfCode": "class TestLeafNode(unittest.TestCase):\n    def test_leaf_node_with_tag_and_value(self):\n        node = LeafNode(\"p\", \"Hello world\")\n        expected = \"<p>Hello world</p>\"\n        self.assertEqual(node.to_html(), expected)\n    def test_leaf_node_with_props(self):\n        node = LeafNode(\"a\", \"Click me!\", {\"href\": \"https://www.google.com\"})\n        expected = '<a href=\"https://www.google.com\">Click me!</a>'\n        self.assertEqual(node.to_html(), expected)\n    def test_leaf_to_html_p(self):",
         "detail": "src.test_htmlnode",
         "documentation": {}
     },

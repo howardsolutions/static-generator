@@ -1,3 +1,5 @@
+import json
+
 class HTMLNode:
     def __init__(self, tag=None, value=None, children=None, props=None):
         self.tag = tag
@@ -22,4 +24,23 @@ class HTMLNode:
         return " ".join(props_list)
     
     def __repr__(self):
-        return f"HTMLNode({self.tag}, {self.value}, {self.children}, {self.props})"
+        return f"HTMLNode({self.tag}, {self.value}, {self.children}, {json.dumps(self.props)})"
+    
+class LeafNode(HTMLNode):
+    def __init__(self, tag=None, value=None, props=None):
+        if value is None:
+            raise ValueError("value is required")
+        super().__init__(tag, value, None, props)
+    
+    def to_html(self):
+        if self.value is None:
+            raise ValueError("value is required")
+ 
+        if self.tag is not None:
+            props_html = self.props_to_html()
+            if props_html:
+                return f"<{self.tag} {props_html}>{self.value}</{self.tag}>"
+            return f"<{self.tag}>{self.value}</{self.tag}>"
+        else:
+            return self.value
+        
