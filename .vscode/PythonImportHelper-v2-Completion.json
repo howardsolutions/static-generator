@@ -41,6 +41,14 @@
         "documentation": {}
     },
     {
+        "label": "text_node_to_html_node",
+        "importPath": "textnode",
+        "description": "textnode",
+        "isExtraImport": true,
+        "detail": "textnode",
+        "documentation": {}
+    },
+    {
         "label": "unittest",
         "kind": 6,
         "isExtraImport": true,
@@ -67,6 +75,22 @@
     },
     {
         "label": "ParentNode",
+        "importPath": "htmlnode",
+        "description": "htmlnode",
+        "isExtraImport": true,
+        "detail": "htmlnode",
+        "documentation": {}
+    },
+    {
+        "label": "HTMLNode",
+        "importPath": "htmlnode",
+        "description": "htmlnode",
+        "isExtraImport": true,
+        "detail": "htmlnode",
+        "documentation": {}
+    },
+    {
+        "label": "LeafNode",
         "importPath": "htmlnode",
         "description": "htmlnode",
         "isExtraImport": true,
@@ -168,6 +192,15 @@
         "importPath": "src.textnode",
         "description": "src.textnode",
         "peekOfCode": "class TextNode:\n    def __init__(self, text, text_type, url=None):\n        self.text = text\n        self.text_type = text_type\n        self.url = url\n    def __eq__(self, other):\n        if not isinstance(other, TextNode):\n            return False\n        return (\n            self.text == other.text and",
+        "detail": "src.textnode",
+        "documentation": {}
+    },
+    {
+        "label": "text_node_to_html_node",
+        "kind": 2,
+        "importPath": "src.textnode",
+        "description": "src.textnode",
+        "peekOfCode": "def text_node_to_html_node(text_node):\n    if not isinstance(text_node, TextNode):\n        raise ValueError(\"Input must be a TextNode\")\n    if text_node.text_type == TextType.TEXT:\n        return LeafNode(value=text_node.text)\n    elif text_node.text_type == TextType.BOLD:\n        return LeafNode(tag=\"b\", value=text_node.text)\n    elif text_node.text_type == TextType.ITALIC:\n        return LeafNode(tag=\"i\", value=text_node.text)\n    elif text_node.text_type == TextType.CODE:",
         "detail": "src.textnode",
         "documentation": {}
     }
