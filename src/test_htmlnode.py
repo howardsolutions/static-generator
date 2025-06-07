@@ -152,7 +152,7 @@ class TestParentNode(unittest.TestCase):
             ParentNode("div", None)
 
         # Test with invalid children type
-        with self.assertRaises(AttributeError):
+        with self.assertRaises(ValueError):
             ParentNode("div", ["not a node"])
 
 if __name__ == "__main__":

@@ -49,6 +49,8 @@ class ParentNode(HTMLNode):
     def __init__(self, tag, children, props=None):
         if tag is None or children is None:
             raise ValueError("tag and children are required")
+        if not all(isinstance(child, HTMLNode) for child in children):
+            raise ValueError("all children must be HTMLNode instances")
         super().__init__(tag, None, children, props)
     
     def to_html(self):

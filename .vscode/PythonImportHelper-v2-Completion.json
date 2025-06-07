@@ -104,7 +104,7 @@
         "kind": 6,
         "importPath": "src.htmlnode",
         "description": "src.htmlnode",
-        "peekOfCode": "class ParentNode(HTMLNode):\n    def __init__(self, tag, children, props=None):\n        if tag is None or children is None:\n            raise ValueError(\"tag and children are required\")\n        super().__init__(tag, None, children, props)\n    def to_html(self):\n        if self.tag is None:\n            raise ValueError(\"tag is required\")\n        if self.children is None:\n            raise ValueError(\"children is required\")",
+        "peekOfCode": "class ParentNode(HTMLNode):\n    def __init__(self, tag, children, props=None):\n        if tag is None or children is None:\n            raise ValueError(\"tag and children are required\")\n        if not all(isinstance(child, HTMLNode) for child in children):\n            raise ValueError(\"all children must be HTMLNode instances\")\n        super().__init__(tag, None, children, props)\n    def to_html(self):\n        if self.tag is None:\n            raise ValueError(\"tag is required\")",
         "detail": "src.htmlnode",
         "documentation": {}
     },
