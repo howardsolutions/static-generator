@@ -41,11 +41,28 @@
         "documentation": {}
     },
     {
+        "label": "HTMLNode",
+        "importPath": "htmlnode",
+        "description": "htmlnode",
+        "isExtraImport": true,
+        "detail": "htmlnode",
+        "documentation": {}
+    },
+    {
         "label": "Enum",
         "importPath": "enum",
         "description": "enum",
         "isExtraImport": true,
         "detail": "enum",
+        "documentation": {}
+    },
+    {
+        "label": "HTMLNode",
+        "kind": 6,
+        "importPath": "src.htmlnode",
+        "description": "src.htmlnode",
+        "peekOfCode": "class HTMLNode:\n    def __init__(self, tag=None, value=None, children=None, props=None):\n        self.tag = tag\n        self.value = value\n        self.children = children\n        self.props = props\n    def to_html(self):\n        raise NotImplementedError(\"to_html not implemented\")\n    def props_to_html(self):\n        if self.props is None:",
+        "detail": "src.htmlnode",
         "documentation": {}
     },
     {
@@ -55,6 +72,15 @@
         "description": "src.main",
         "peekOfCode": "def main():\n    node = TextNode(\"This is a test\", TextType.NORMAL)\n    print(node)\nif __name__ == \"__main__\":\n    main()",
         "detail": "src.main",
+        "documentation": {}
+    },
+    {
+        "label": "TestHTMLNode",
+        "kind": 6,
+        "importPath": "src.test_htmlnode",
+        "description": "src.test_htmlnode",
+        "peekOfCode": "class TestHTMLNode(unittest.TestCase):\n    def test_props_to_html(self):\n        node = HTMLNode(\n            \"a\",\n            \"Click me!\",\n            None,\n            {\"href\": \"https://www.google.com\", \"target\": \"_blank\"}\n        )\n        expected = 'href=\"https://www.google.com\" target=\"_blank\"'\n        self.assertEqual(node.props_to_html(), expected)",
+        "detail": "src.test_htmlnode",
         "documentation": {}
     },
     {
